@@ -1,0 +1,24 @@
+{
+  "name": "webpagescraper",
+  "version": "1.0.0",
+  "description": "Command line program to download web page",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WildHongAppeared/WebPageScraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WildHongAppeared/WebPageScraper/issues"
+  },
+  "homepage": "https://github.com/WildHongAppeared/WebPageScraper#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "puppeteer": "^13.5.2",
+    "request-promise": "^4.2.6"
+  }
+}
