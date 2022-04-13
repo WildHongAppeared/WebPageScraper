@@ -8,6 +8,10 @@ var rp = require('request-promise'),
 
 const args = process.argv.slice(2) //get URL arguments. First 2 arg in Nodejs are process arg
 
+/* Main function to archive the web page
+args: a list of arguments denoting the webpages to archive and custom behaviour parameters
+args[0]: can either be a url string or the string 'metadata', if 'metadata' is present, the console will also print out metadata regarding archived website
+ */
 async function downloadWeb(args){
     let requireMetadata = false
     if(args[0] === 'metadata'){
@@ -61,6 +65,9 @@ async function downloadWeb(args){
     }
 }
 
+/*Function to download files from url
+url: url string denoting url to download from
+destination: string denoting which directory to write downloaded file to */
 const download = (url, destination) => new Promise((resolve, reject) => {
     let directoryArray = destination.split('/')
     let filename = directoryArray.pop()
@@ -82,7 +89,10 @@ const download = (url, destination) => new Promise((resolve, reject) => {
       reject(error.message)
     })
   })
-  
+
+/*Function to run headless browser and scrape assets
+arg: string argument denoting which webpage to run
+ */
 async function downloadAssets(arg) {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
@@ -102,8 +112,10 @@ async function downloadAssets(arg) {
     await browser.close();
 }
 
-
-const isValidURL = (s) => { //function to check if an URL is a valid URL path
+/*Function to check if a URL is a valid url or not
+s: string argument denoting url to check
+ */
+const isValidURL = (s) => { 
     try {
         new URL(s);
         return true;
@@ -112,5 +124,5 @@ const isValidURL = (s) => { //function to check if an URL is a valid URL path
     }
 }
 
-downloadWeb(args).then((res) => { //invoke the main download function
+downloadWeb(args).then((res) => { //invoke the main function
 })
